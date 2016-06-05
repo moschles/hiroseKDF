@@ -1,7 +1,7 @@
 # hiroseKDF
 Key Derivation Function using a One-Way Cryptographic Compression Function
 
-HiroseKDF is written as a class for easy deployment.
+class HiroseKDF{} is written as a class for easy deployment.
 
 It accepts a message of any length up to 536 Megabytes and returns a digest of 256 bits.
 The hash function will accept messages whose length is specified at bit-level precision.
