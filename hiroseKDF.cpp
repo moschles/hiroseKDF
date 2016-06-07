@@ -46,8 +46,8 @@ Although none of the above embellishments appear in the original paper, I have
 made no changes that could impact the security of Hirose's construction.
 
 
-Saturday, June 04, 2016
-10:21:18 PM
+Monday, 06 June, 2016
+10:04:58 PM
 */
 
 
