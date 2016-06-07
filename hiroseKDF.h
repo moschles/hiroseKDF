@@ -2,7 +2,7 @@
 
 HiroseKDF is a class for a key derivation function. 
 
-It accepts a message of any length up to 536 Megabytes and returns a digest of 256 bits.
+It accepts a message of any length up to 511 Megabytes and returns a digest of 256 bits.
 The hash function will accept messages whose length is specified at bit-level precision.
 When hashing binary data, the supplied length must be given in BITS, not bytes. 
 The hash function is derived from a one-way cryptographic compression function.
@@ -46,8 +46,8 @@ Although none of the above embellishments appear in the original paper, I have
 made no changes that could impact the security of Hirose's construction.
 
 
-Saturday, June 04, 2016
-10:21:18 PM
+Saturday, June 06, 2016
+09:56:48 PM
 */
 
 
@@ -59,6 +59,7 @@ Saturday, June 04, 2016
 #define ChanCombine(W,a,b,c,d)		{W=(a<<24)|(b<<16)|(c<<8)|(d);}
 #define BoteSet(B,x,y,u,v)         	{B.X=x;B.Y=y;B.U=u;B.V=v;}
 #define h_Block						Blockonetwoeight
+#define MAXHMSGLENGTH				(0x1FFFFFFF)
 #define MAXHASHROUNDS				(2)
 
 
