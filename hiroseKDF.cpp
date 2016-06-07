@@ -2,7 +2,7 @@
 
 HiroseKDF is a class for a key derivation function. 
 
-It accepts a message of any length up to 536 Megabytes and returns a digest of 256 bits.
+It accepts a message of any length up to 511 Megabytes and returns a digest of 256 bits.
 The hash function will accept messages whose length is specified at bit-level precision.
 When hashing binary data, the supplied length must be given in BITS, not bytes. 
 The hash function is derived from a one-way cryptographic compression function.
@@ -46,8 +46,8 @@ Although none of the above embellishments appear in the original paper, I have
 made no changes that could impact the security of Hirose's construction.
 
 
-Saturday, June 04, 2016
-10:21:18 PM
+Monday, 06 June, 2016
+10:04:58 PM
 */
 
 
@@ -134,8 +134,8 @@ void HiroseKDF::HashText( char * txtmsg , ubyte8_t * digest )
 	 //.
 	cast = reinterpret_cast<KDFucpointer>( txtmsg );
 	lenu = (uint32_t)strlen(txtmsg);
-	if( lenu > 0x1FFFFFFF ) {
-		lenu = 0x1FFFFFFF;
+	if( lenu > MAXHMSGLENGTH ) {
+		lenu = MAXHMSGLENGTH;
 	}
 	lenu = lenu*8;
 	HashBinary( cast , lenu , digest );
@@ -156,8 +156,8 @@ void HiroseKDF::HashText( const char * txtmsg  , ubyte8_t * digest )
 	 //.
 	cast = reinterpret_cast<KDFcucpointer>( txtmsg );
 	lenu = (uint32_t)strlen(txtmsg);
-	if( lenu > 0x1FFFFFFF ) {
-		lenu = 0x1FFFFFFF;
+	if( lenu > MAXHMSGLENGTH ) {
+		lenu = MAXHMSGLENGTH;
 	}
 	lenu = lenu*8;
 	HashBinary( cast , lenu , digest );
@@ -179,8 +179,8 @@ void HiroseKDF::HashText( std::string & txtmsg , ubyte8_t * digest )
 	uint32_t 	Ltm , cv;
 	 //.
 	Ltm = (uint32_t) (  txtmsg.length()  );
-	if( Ltm > 0x1FFFFFFF ) {
-		Ltm = 0x1FFFFFFF;
+	if( Ltm > MAXHMSGLENGTH ) {
+		Ltm = MAXHMSGLENGTH;
 	}
 	
 	sallo = new ubyte8_t[Ltm];
